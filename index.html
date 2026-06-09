@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Théo Sementa — CV</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #0071e3;
+      --blue-light: #e8f1fb;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --separator: #d2d2d7;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --radius: 18px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 40px 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .header-name h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.8px;
+      line-height: 1.1;
+    }
+
+    .header-name p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    .header-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+
+    .header-contact a,
+    .header-contact span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    .header-contact a:hover { color: var(--blue); }
+
+    .links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .links a {
+      font-size: 0.85rem;
+      color: var(--blue) !important;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .links a:hover { text-decoration: underline; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 36px 44px;
+    }
+
+    .card-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    /* ── Tech Stack ── */
+    .stack { display: flex; flex-direction: column; gap: 10px; }
+
+    .stack-row { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; }
+
+    .stack-label {
+      font-weight: 600;
+      color: var(--text);
+      min-width: 110px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .tag {
+      background: var(--bg);
+      border-radius: 20px;
+      padding: 3px 11px;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── Timeline ── */
+    .timeline { display: flex; flex-direction: column; gap: 32px; }
+
+    .timeline-entry { display: flex; gap: 20px; }
+
+    .timeline-dot-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+
+    .timeline-line {
+      flex: 1;
+      width: 1px;
+      background: var(--separator);
+      margin-top: 6px;
+    }
+
+    .timeline-entry:last-child .timeline-line { display: none; }
+
+    .timeline-body { flex: 1; padding-bottom: 4px; }
+
+    .tl-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tl-company { font-weight: 700; font-size: 0.97rem; }
+
+    .tl-date {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .tl-role {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+      margin-bottom: 10px;
+    }
+
+    .tl-body ul {
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .tl-body li { font-size: 0.88rem; line-height: 1.55; }
+
+    .tl-body p { font-size: 0.88rem; line-height: 1.6; color: #333; }
+
+    /* ── Projects ── */
+    .projects { display: flex; flex-direction: column; gap: 14px; }
+
+    .project-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 18px;
+      background: var(--bg);
+      border-radius: 12px;
+    }
+
+    .project-info { }
+    .project-name { font-weight: 600; font-size: 0.92rem; }
+    .project-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
+
+    .project-link {
+      font-size: 0.8rem;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-link:hover { text-decoration: underline; }
+
+    .project-note {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .project-note a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    .project-note a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .header { padding: 28px 24px; }
+      .card { padding: 28px 24px; }
+      .header-contact { align-items: flex-start; }
+      .stack-row { flex-direction: column; gap: 6px; }
+      .stack-label { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-name">
+      <h1>Théo Sementa</h1>
+      <p>Software Engineer — iOS & AI · Luxembourg 🇱🇺</p>
+    </div>
+    <div class="header-contact">
+      <span>theosementa@gmail.com</span>
+      <div class="links">
+        <a href="https://github.com/theosementa">GitHub</a>
+        <a href="https://www.linkedin.com/in/theosementa">LinkedIn</a>
+        <a href="https://x.com/theosementa">X</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tech Stack -->
+  <section class="card">
+    <div class="card-title">Tech Stack</div>
+    <div class="stack">
+      <div class="stack-row">
+        <span class="stack-label">Mobile</span>
+        <div class="tags">
+          <span class="tag">iOS</span><span class="tag">SwiftUI</span><span class="tag">Swift Concurrency</span><span class="tag">SPM</span><span class="tag">MVVM</span><span class="tag">MVI</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-label">AI & Backend</span>
+        <div class="tags">
+          <span class="tag">LLM APIs</span><span class="tag">MCP Servers</span><span class="tag">AI Workflows</span><span class="tag">Microservices</span><span class="tag">REST APIs</span><span class="tag">TypeScript</span><span class="tag">NestJS</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-label">Architecture</span>
+        <div class="tags">
+          <span class="tag">UML</span><span class="tag">Modular Swift Packages</span><span class="tag">DI Container</span><span class="tag">Feature Flags</span><span class="tag">Clean Architecture</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <span class="stack-label">Tooling</span>
+        <div class="tags">
+          <span class="tag">Xcode</span><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Claude Code</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="card">
+    <div class="card-title">Professional Experience</div>
+    <div class="timeline">
+
+      <div class="timeline-entry">
+        <div class="timeline-dot-col"><div class="dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-body">
+          <div class="tl-top">
+            <span class="tl-company">Neopixl — Differdange, Luxembourg</span>
+            <span class="tl-date">2023 – Present</span>
+          </div>
+          <div class="tl-role">Software Engineer – iOS & AI · Apprenticeship</div>
+          <div class="tl-body"><ul>
+            <li>Built and shipped <strong>Baloise LU</strong> (insurance) and <strong>FrenchBee</strong> (airline) iOS apps, serving thousands of users in production</li>
+            <li>Designed and developed <strong>CineKlee</strong>, an AI-powered iOS app integrating LLM-based workflows</li>
+            <li>Architected a <strong>modular Swift package ecosystem</strong> enabling code reuse across multiple apps (Navigation, Network, Keychain, Feature Flags, DI Container…)</li>
+            <li>Built <strong>AI automation workflows</strong> for internal tooling, leveraging LLM APIs and MCP servers to reduce manual overhead</li>
+            <li>Contributed to microservices integrations and backend communication layers</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-dot-col"><div class="dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-body">
+          <div class="tl-top">
+            <span class="tl-company">efluid — Metz, France</span>
+            <span class="tl-date">2022 – 2023</span>
+          </div>
+          <div class="tl-role">Information Systems QA Engineer · Apprenticeship</div>
+          <div class="tl-body"><ul>
+            <li>Performed functional and regression testing on pre-production databases</li>
+            <li>Designed and implemented <strong>automated testing workflows</strong>, reducing manual QA effort</li>
+            <li>Collaborated with dev teams to identify, document and track bugs through resolution</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-dot-col"><div class="dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-body">
+          <div class="tl-top">
+            <span class="tl-company">Antares — Metz, France</span>
+            <span class="tl-date">2021 – 2022</span>
+          </div>
+          <div class="tl-role">Helpdesk Technician · Apprenticeship</div>
+          <div class="tl-body"><ul>
+            <li>Provided daily technical support to end users, resolving hardware and software issues</li>
+            <li>Diagnosed incidents and escalated complex cases to L2/L3 support</li>
+            <li>Contributed to internal knowledge base documentation</li>
+          </ul></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="card">
+    <div class="card-title">Education</div>
+    <div class="timeline">
+
+      <div class="timeline-entry">
+        <div class="timeline-dot-col"><div class="dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-body">
+          <div class="tl-top">
+            <span class="tl-company">Metz Numeric School — Metz, France</span>
+            <span class="tl-date">2024 – 2026</span>
+          </div>
+          <div class="tl-role">Master's Degree – Software Architect · Apprenticeship @ Neopixl</div>
+          <div class="tl-body"><p>Focused on software architecture, microservices, hexagonal architecture, cloud fundamentals, security, and project management.<br>Final project: designing a microservices-based solution to help cities manage urban transportation systems.</p></div>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-dot-col"><div class="dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-body">
+          <div class="tl-top">
+            <span class="tl-company">Metz Numeric School — Metz, France</span>
+            <span class="tl-date">2023 – 2024</span>
+          </div>
+          <div class="tl-role">Bachelor's Degree – Full Stack Developer · Apprenticeship @ Neopixl</div>
+          <div class="tl-body"><p>Full stack curriculum covering React, React Native, Angular, Node.js, TypeScript, PHP, Java, C#, SQL, Docker, and UML.<br>Final project: a native Swift app with a Node.js API enabling companies to automate expense report management.</p></div>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="timeline-dot-col"><div class="dot"></div><div class="timeline-line"></div></div>
+        <div class="timeline-body">
+          <div class="tl-top">
+            <span class="tl-company">UIMM Lorraine — Yutz, France</span>
+            <span class="tl-date">2021 – 2023</span>
+          </div>
+          <div class="tl-role">BTS – Digital Systems</div>
+          <div class="tl-body"><p>Dual focus on networking and embedded systems (ESP32, Arduino), with programming in C, HTML, CSS, and JavaScript.<br>Final project: an Arduino-powered robot navigating autonomously along a path using laser sensors.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Personal Projects -->
+  <section class="card">
+    <div class="card-title">Personal Projects</div>
+    <div class="projects">
+      <div class="project-item">
+        <div class="project-info">
+          <div class="project-name">Modulo 🏦</div>
+          <div class="project-desc">Clean, focused savings tracker for iOS</div>
+        </div>
+        <a class="project-link" href="https://github.com/theosementa/modulo-ios">View on GitHub →</a>
+      </div>
+      <div class="project-item">
+        <div class="project-info">
+          <div class="project-name">Pixely 📸</div>
+          <div class="project-desc">Photo management app with album organization</div>
+        </div>
+        <a class="project-link" href="https://github.com/theosementa/Pixely-swift">View on GitHub →</a>
+      </div>
+    </div>
+    <p class="project-note" style="margin-top:16px;">More projects, packages and POCs on <a href="https://github.com/theosementa">github.com/theosementa</a></p>
+  </section>
+
+</div>
+</body>
+</html>
